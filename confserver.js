@@ -7,8 +7,8 @@ var util = require('util');
 
 //conexion base de datos
 pg.defaults.ssl = true;
-const connectionString = process.env.DATABASE_URL || 'postgres://ec2-184-72-247-70.compute-1.amazonaws.com:5432/d4iiq2fmt7j93l';
-var conString = "postgres://mcnhumzbkkfqgv:0919c6de2e7e75d9b13e08c67b58d1cbf1218f08d49a8874306d0ea0954cbfb1@ec2-184-72-247-70.compute-1.amazonaws.com:5432/d4iiq2fmt7j93l";
+const connectionString = process.env.DATABASE_URL || 'postgres://ec2-54-227-244-12.compute-1.amazonaws.com:5432/d4c5e306fap2ft';
+var conString = "postgres://gbfafvrsqoyftb:5f7450bea5982bd945053e0ac45289678ddfe9b810924074e1a9c865ce20ed15@ec2-54-227-244-12.compute-1.amazonaws.com:5432/d4c5e306fap2ft";
 //const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/baseexcursion';
 //var conString = "postgres://postgres:postgres@localhost:5432/baseexcursion";
 
