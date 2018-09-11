@@ -7,10 +7,10 @@ var util = require('util');
 
 //conexion base de datos
 pg.defaults.ssl = true;
-//const connectionString = process.env.DATABASE_URL || 'postgres://ec2-184-72-247-70.compute-1.amazonaws.com:5432/d4iiq2fmt7j93l';
-//var conString = "postgres://mcnhumzbkkfqgv:0919c6de2e7e75d9b13e08c67b58d1cbf1218f08d49a8874306d0ea0954cbfb1@ec2-184-72-247-70.compute-1.amazonaws.com:5432/d4iiq2fmt7j93l";
-const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/baseexcursion';
-var conString = "postgres://postgres:postgres@localhost:5432/baseexcursion";
+const connectionString = process.env.DATABASE_URL || 'postgres://ec2-184-72-247-70.compute-1.amazonaws.com:5432/d4iiq2fmt7j93l';
+var conString = "postgres://mcnhumzbkkfqgv:0919c6de2e7e75d9b13e08c67b58d1cbf1218f08d49a8874306d0ea0954cbfb1@ec2-184-72-247-70.compute-1.amazonaws.com:5432/d4iiq2fmt7j93l";
+//const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/baseexcursion';
+//var conString = "postgres://postgres:postgres@localhost:5432/baseexcursion";
 
 //var conString = "postgres://ouotpxpfgzvdif:14f8728c627f11f8a487cdf5a21b6625efcf196a70f03529ebacd6aa9468c80e@ec2-54-163-249-237.compute-1.amazonaws.com:5432/df2rtm1mo3h4vl";
 var client = new pg.Client(conString);
