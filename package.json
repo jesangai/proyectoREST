@@ -1,0 +1,20 @@
+{
+  "name": "proyectoREST",
+  "description": "Excursiones para niños",
+  "version": "1.0.0",
+  "main": "confserver.js",
+  "engines": {
+    "node": "8.11.3",
+    "npm": "6.4.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "http": "0.0.0",
+    "pg": "^7.3.0",
+    "util": "^0.10.3"
+  },
+  "scripts": {
+    "start": "node confserver.js"
+  }
+}
