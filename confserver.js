@@ -9,10 +9,9 @@ var util = require('util');
 pg.defaults.ssl = true;
 const connectionString = process.env.DATABASE_URL || 'postgres://ec2-54-227-244-12.compute-1.amazonaws.com:5432/d4c5e306fap2ft';
 var conString = "postgres://gbfafvrsqoyftb:5f7450bea5982bd945053e0ac45289678ddfe9b810924074e1a9c865ce20ed15@ec2-54-227-244-12.compute-1.amazonaws.com:5432/d4c5e306fap2ft";
-//const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/baseexcursion';
-//var conString = "postgres://postgres:postgres@localhost:5432/baseexcursion";
+//const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/proyecto';
+//var conString = "postgres://postgres:postgres@localhost:5432/proyecto";
 
-//var conString = "postgres://ouotpxpfgzvdif:14f8728c627f11f8a487cdf5a21b6625efcf196a70f03529ebacd6aa9468c80e@ec2-54-163-249-237.compute-1.amazonaws.com:5432/df2rtm1mo3h4vl";
 
 var app = express();
 
@@ -62,6 +61,26 @@ app.post('/flistarexcursionesporusuario', (req, res) => {
     });
 });
 
+app.post('/flistarexcursionBusqueda', (req, res) => {
+    var client = new pg.Client(conString);
+    client.connect(function(err) {
+        if(err) {
+            return console.error('could not connect to postgres', err);
+            return res.status(500).json({success: false, data: err});
+        }
+
+        client.query("SELECT * FROM excursiones WHERE titulo LIKE '"+req.body.titulo+"%' AND idusuario="+req.body.idusuario+";"
+                     ,function(err, result) {
+            if(err) {
+                return console.error('error running query', err);
+            }
+
+            client.end();
+            return res.json(result.rows);
+            
+        }); 
+    });
+});
 app.post('/fcargaralumnoporid', (req, res) => {
     var client = new pg.Client(conString);
     client.connect(function(err) {
@@ -273,7 +292,7 @@ app.put('/fguardarpuntajealumno', (req, res) => {
         }); 
     });
 });
-app.post('/fguardarEditarExcursion', (req, res) => {
+app.put('/fguardarEditarExcursion', (req, res) => {
     var client = new pg.Client(conString);
     client.connect(function(err) {
         if(err) {
@@ -293,7 +312,7 @@ app.post('/fguardarEditarExcursion', (req, res) => {
     });
 });
 
-app.post('/feditaralumnoporid', (req, res) => {
+app.put('/feditaralumnoporid', (req, res) => {
     var client = new pg.Client(conString);
     client.connect(function(err) {
         if(err) {
@@ -314,7 +333,7 @@ app.post('/feditaralumnoporid', (req, res) => {
 });
 
 
-app.post('/feditarusuarioporid', (req, res) => {
+app.put('/feditarusuarioporid', (req, res) => {
     var client = new pg.Client(conString);
     client.connect(function(err) {
         if(err) {
@@ -393,7 +412,7 @@ app.post('/feliminarexcursion', (req, res) => {
         }); 
     });
 });
-app.post('/feliminaralumno', (req, res) => {
+app.delete('/feliminaralumno', (req, res) => {
     var client = new pg.Client(conString);
     client.connect(function(err) {
         if(err) {
@@ -412,7 +431,7 @@ app.post('/feliminaralumno', (req, res) => {
         }); 
     });
 });
-app.post('/feliminarusuario', (req, res) => {
+app.delete('/feliminarusuario', (req, res) => {
     var client = new pg.Client(conString);
     client.connect(function(err) {
         if(err) {
@@ -431,7 +450,7 @@ app.post('/feliminarusuario', (req, res) => {
         }); 
     });
 });
-app.post('/feliminarpasos', (req, res) => {
+app.delete('/feliminarpasos', (req, res) => {
     var client = new pg.Client(conString);
     client.connect(function(err) {
         if(err) {
@@ -451,7 +470,7 @@ app.post('/feliminarpasos', (req, res) => {
     });
 });
 
-app.post('/feliminarpasoporid', (req, res) => {
+app.delete('/feliminarpasoporid', (req, res) => {
     var client = new pg.Client(conString);
     client.connect(function(err) {
         if(err) {
